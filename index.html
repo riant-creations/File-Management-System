@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Home - University of Ilorin</title>
+    <link rel="stylesheet" href="fontawesome/css/all.min.css" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="top-bar-container">
+      <div class="top-bar-logo">
+        <img src="./unilorin-logo.png" alt="University of Ilorin" />
+        <h3>University<br /><span class="of">of Ilorin</span></h3>
+      </div>
+      <header class="top-bar">
+        <h2>Welcome back, <span id="user-name">John Doe</span></h2>
+        <nav class="top-nav">
+          <div class="nav">
+            <a href="./index.html" id="nav-home" class="active"
+              ><i class="fa-solid fa-home"></i> Home</a
+            >
+            <a href="./file-management.html" id="nav-files"
+              ><i class="fa-solid fa-server"></i> File Management</a
+            >
+          </div>
+        </nav>
+      </header>
+    </div>
+
+    <!-- Main Content Area -->
+    <div class="main-content">
+      <!-- HOME PAGE -->
+      <section id="home-page">
+        <!-- Example banner with user details -->
+        <div class="home-banner">
+          <div class="avatar">
+            <img src="./avatar.png" alt="Student Avatar" />
+          </div>
+          <h3>John Doe Alabi</h3>
+          <p>
+            Identity Number: 20/52HA123 <br />
+            Department of Computer Science <br />
+            400 Level, B.Sc Computer Science <br />
+            <br />
+            Current Session: 2024/2025 Academic Session <br />
+            Current Semester: Rain Semester
+          </p>
+          <button class="profile-btn">View Profile</button>
+        </div>
+
+        <!-- Warning / announcement -->
+        <div class="warning-msg">
+          <p>
+            <i class="fas fa-exclamation-triangle"></i> FILE UPLOAD LIMIT:
+            Maximum file size is 10MB. Supported formats: PDF, DOC, DOCX, JPG,
+            PNG
+          </p>
+        </div>
+
+        <!-- Quick links -->
+        <div class="quick-links">
+          <div class="quick-link-box">
+            <h4><i class="fa-solid fa-book"></i> Courses</h4>
+          </div>
+          <div class="quick-link-box">
+            <nav class="h4">
+              <a href="./file-management.html" id="nav-files">
+                <h4><i class="fa-solid fa-server"></i> File Management</h4>
+              </a>
+            </nav>
+          </div>
+        </div>
+      </section>
+    </div>
+    <script src="/script.js"></script>
+  </body>
+</html>

@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>File Management - University of Ilorin</title>
+    <link rel="stylesheet" href="fontawesome/css/all.min.css" />
+    <link rel="stylesheet" href="styles.css" />
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.32/dist/sweetalert2.all.min.js"></script>
+  </head>
+  <body>
+    <div class="top-bar-container">
+      <div class="top-bar-logo">
+        <img src="./unilorin-logo.png" alt="University of Ilorin" />
+        <h3>University<br /><span class="of">of Ilorin</span></h3>
+      </div>
+      <header class="top-bar">
+        <h2>Welcome back, <span id="user-name">John Doe</span></h2>
+        <nav class="top-nav">
+          <div class="nav">
+            <a href="./index.html" id="nav-home"
+              ><i class="fa-solid fa-home"></i> Home</a
+            >
+            <a href="./file-management.html" id="nav-files" class="active"
+              ><i class="fa-solid fa-server"></i> File Management</a
+            >
+          </div>
+        </nav>
+      </header>
+    </div>
+
+    <!-- Main Content Area -->
+    <div class="main-content">
+      <!-- Breadcrumbs -->
+      <div class="breadcrumbs">
+        <a href="index.html">Home</a> <i class="fas fa-chevron-right"></i> File
+        Management
+      </div>
+
+      <section class="file-page">
+        <h2><i class="fas fa-file-upload"></i> File Upload</h2>
+        <form id="upload-form">
+          <div class="form-group">
+            <label for="file-category">Select File Category:</label>
+            <select id="file-category" name="category" required>
+              <option value="course-form">Course Form</option>
+              <option value="school-fees-receipt">School Fees Receipt</option>
+              <option value="waec-result">WAEC Result</option>
+              <option value="jamb-result">JAMB Result</option>
+              <option value="jamb-admission-letter">
+                JAMB Admission Letter
+              </option>
+              <option value="birth-certificate">Birth Certificate</option>
+              <option value="state-of-origin">
+                State of Origin Certificate
+              </option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label>Upload File:</label>
+            <div class="file-input-wrapper" id="file-drop-area">
+              <div class="file-input-icon">
+                <i class="fas fa-cloud-upload-alt"></i>
+              </div>
+              <div class="file-input-text">
+                Drag & drop your file here or click to browse
+              </div>
+              <div class="file-input-help">
+                Supported formats: PDF, DOC, DOCX, JPG, PNG
+              </div>
+              <input
+                type="file"
+                id="fileInput"
+                name="file"
+                accept=".pdf,.doc,.docx,.jpg,.png"
+              />
+            </div>
+          </div>
+
+          <div class="file-preview" id="file-preview">
+            <div class="file-info">
+              <i class="fas fa-file-alt"></i>
+              <div class="file-details">
+                <div class="file-name" id="preview-file-name">filename.pdf</div>
+                <div class="file-meta" id="preview-file-meta">
+                  PDF Document, 500 KB
+                </div>
+              </div>
+              <div class="file-actions">
+                <button
+                  type="button"
+                  class="delete-btn"
+                  id="remove-file-btn"
+                  title="Remove"
+                >
+                  <i class="fas fa-times"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div class="upload-progress" id="upload-progress">
+            <div class="progress-container">
+              <div class="progress-bar" id="upload-progress-bar"></div>
+            </div>
+            <div class="progress-text">
+              <span id="upload-progress-text">0%</span>
+              <span id="upload-status">Uploading...</span>
+            </div>
+          </div>
+
+          <button type="submit">
+            <i class="fas fa-upload"></i> Upload File
+          </button>
+        </form>
+      </section>
+
+      <section id="file-list-section">
+        <h2><i class="fas fa-folder-open"></i> Files</h2>
+        <ul class="file-categories-list">
+          <li>
+            <button class="category-toggle" data-category="course-form">
+              Course Form <i class="fa-solid fa-chevron-down"></i>
+            </button>
+            <ul class="file-list-dropdown" id="course-form-files">
+              <!-- Files will be dynamically added here -->
+            </ul>
+          </li>
+          <li>
+            <button class="category-toggle" data-category="school-fees-receipt">
+              School Fees Receipt <i class="fa-solid fa-chevron-down"></i>
+            </button>
+            <ul class="file-list-dropdown" id="school-fees-receipt-files">
+              <!-- Files will be dynamically added here -->
+            </ul>
+          </li>
+          <li>
+            <button class="category-toggle" data-category="waec-result">
+              WAEC Result <i class="fa-solid fa-chevron-down"></i>
+            </button>
+            <ul class="file-list-dropdown" id="waec-result-files">
+              <!-- Files will be dynamically added here -->
+            </ul>
+          </li>
+          <li>
+            <button class="category-toggle" data-category="jamb-result">
+              JAMB Result <i class="fa-solid fa-chevron-down"></i>
+            </button>
+            <ul class="file-list-dropdown" id="jamb-result-files">
+              <!-- Files will be dynamically added here -->
+            </ul>
+          </li>
+          <li>
+            <button
+              class="category-toggle"
+              data-category="jamb-admission-letter"
+            >
+              JAMB Admission Letter <i class="fa-solid fa-chevron-down"></i>
+            </button>
+            <ul class="file-list-dropdown" id="jamb-admission-letter-files">
+              <!-- Files will be dynamically added here -->
+            </ul>
+          </li>
+          <li>
+            <button class="category-toggle" data-category="birth-certificate">
+              Birth Certificate <i class="fa-solid fa-chevron-down"></i>
+            </button>
+            <ul class="file-list-dropdown" id="birth-certificate-files">
+              <!-- Files will be dynamically added here -->
+            </ul>
+          </li>
+          <li>
+            <button class="category-toggle" data-category="state-of-origin">
+              State of Origin Certificate
+              <i class="fa-solid fa-chevron-down"></i>
+            </button>
+            <ul class="file-list-dropdown" id="state-of-origin-files">
+              <!-- Files will be dynamically added here -->
+            </ul>
+          </li>
+        </ul>
+      </section>
+
+      <section class="archived-files-section">
+        <h2><i class="fas fa-archive"></i> Archived Files</h2>
+        <ul class="archived-files-list">
+          <li>
+            <a
+              href="#"
+              class="toggle-link"
+              data-target="archived-course-form-files"
+            >
+              Course Form
+            </a>
+            <ul class="file-list-dropdown" id="archived-course-form-files">
+              <!-- Archived files will be dynamically added here -->
+            </ul>
+          </li>
+          <li>
+            <a
+              href="#"
+              class="toggle-link"
+              data-target="archived-school-fees-receipt-files"
+            >
+              School Fees Receipt
+            </a>
+            <ul
+              class="file-list-dropdown"
+              id="archived-school-fees-receipt-files"
+            >
+              <!-- Archived files will be dynamically added here -->
+            </ul>
+          </li>
+          <li>
+            <a
+              href="#"
+              class="toggle-link"
+              data-target="archived-waec-result-files"
+            >
+              WAEC Result
+            </a>
+            <ul class="file-list-dropdown" id="archived-waec-result-files">
+              <!-- Archived files will be dynamically added here -->
+            </ul>
+          </li>
+          <li>
+            <a
+              href="#"
+              class="toggle-link"
+              data-target="archived-jamb-result-files"
+            >
+              JAMB Result
+            </a>
+            <ul class="file-list-dropdown" id="archived-jamb-result-files">
+              <!-- Archived files will be dynamically added here -->
+            </ul>
+          </li>
+          <li>
+            <a
+              href="#"
+              class="toggle-link"
+              data-target="archived-jamb-admission-letter-files"
+            >
+              JAMB Admission Letter
+            </a>
+            <ul
+              class="file-list-dropdown"
+              id="archived-jamb-admission-letter-files"
+            >
+              <!-- Archived files will be dynamically added here -->
+            </ul>
+          </li>
+          <li>
+            <a
+              href="#"
+              class="toggle-link"
+              data-target="archived-birth-certificate-files"
+            >
+              Birth Certificate
+            </a>
+            <ul
+              class="file-list-dropdown"
+              id="archived-birth-certificate-files"
+            >
+              <!-- Archived files will be dynamically added here -->
+            </ul>
+          </li>
+          <li>
+            <a
+              href="#"
+              class="toggle-link"
+              data-target="archived-state-of-origin-files"
+            >
+              State of Origin Certificate
+            </a>
+            <ul class="file-list-dropdown" id="archived-state-of-origin-files">
+              <!-- Archived files will be dynamically added here -->
+            </ul>
+          </li>
+        </ul>
+      </section>
+
+      <footer>
+        <p>&copy; 2025 University of Ilorin</p>
+      </footer>
+    </div>
+
+    <!-- File Preview Modal -->
+    <div class="modal-backdrop" id="file-preview-modal">
+      <div class="modal">
+        <div class="modal-header">
+          <h3 class="modal-title">
+            <i class="fas fa-file-alt"></i>
+            <span id="preview-modal-title">File Preview</span>
+          </h3>
+          <button class="modal-close" id="close-preview-modal">
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="file-preview-container" id="preview-container">
+            <!-- File preview will be shown here -->
+          </div>
+          <div class="file-preview-meta">
+            <dl>
+              <dt>File Name</dt>
+              <dd id="preview-modal-filename">filename.pdf</dd>
+
+              <dt>File Type</dt>
+              <dd id="preview-modal-filetype">PDF Document</dd>
+
+              <dt>File Size</dt>
+              <dd id="preview-modal-filesize">500 KB</dd>
+
+              <dt>Uploaded Date</dt>
+              <dd id="preview-modal-uploaddate">July 15, 2025</dd>
+            </dl>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button class="btn-secondary" id="close-preview-btn">Close</button>
+          <button class="btn-primary" id="download-preview-btn">
+            <i class="fas fa-download"></i> Download
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Toast Container for notifications -->
+    <div class="toast-container" id="toast-container"></div>
+
+    <!-- Floating Action Button -->
+    <div class="fab" id="scroll-top-btn">
+      <i class="fas fa-arrow-up"></i>
+    </div>
+    <div class="modal-backdrop" id="file-preview-modal"></div>
+    <script src="script.js"></script>
+    <script src="file-management.js"></script>
+  </body>
+</html>
+```
